@@ -43,8 +43,8 @@ const logg= document.getElementById("logid");
 	//ctx.rect(leftCor,topCor, widthCore, heightCore);
 	
 	const ctx = canvas.getContext('2d');
-	const desiredWidth = 1280;
-	const desiredHeight = 1024;
+	//const desiredWidth = 1280;
+	//const desiredHeight = 1024;
 
 	// settings for the getUserMedia call
 	const constraints = {
@@ -84,8 +84,8 @@ else
   }
 		
 		console.log(actualSettings.width, actualSettings.height)
-		//canvas.width =360 ;//actualSettings.width;
-		//canvas.height = 680;//actualSettings.height;
+		canvas.width =actualSettings.width;
+		canvas.height = actualSettings.height;
 
 		// every k milliseconds, we draw the contents of the video to the canvas and run the detector.
 		const timer = setInterval(detectSymbols, 100);
