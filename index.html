@@ -86,7 +86,10 @@ else
 		console.log(actualSettings.width, actualSettings.height)
 		canvas.width =actualSettings.width;
 		canvas.height = actualSettings.height;
-
+    leftCor=10;
+	topCor=(canvas.height/2)-20;
+	widthCore= canvas.width-30;
+	heightCore=70;
 		// every k milliseconds, we draw the contents of the video to the canvas and run the detector.
 		const timer = setInterval(detectSymbols, 100);
 
