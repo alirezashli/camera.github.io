@@ -34,6 +34,8 @@ Module.onRuntimeInitialized = async _ => {
 const logg= document.getElementById("logid");
 	const video = document.getElementById("live");
 	const canvas = document.getElementById("canvas");
+	canvas.width =640 ;//actualSettings.width;
+	canvas.height = 480;//actualSettings.height;
 	const ctx = canvas.getContext('2d');
 	const desiredWidth = 640;
 	const desiredHeight = 480;
@@ -76,8 +78,8 @@ else
   }
 		
 		console.log(actualSettings.width, actualSettings.height)
-		canvas.width =680 ;//actualSettings.width;
-		canvas.height = 200;//actualSettings.height;
+		//canvas.width =360 ;//actualSettings.width;
+		//canvas.height = 680;//actualSettings.height;
 
 		// every k milliseconds, we draw the contents of the video to the canvas and run the detector.
 		const timer = setInterval(detectSymbols, 100);
@@ -92,7 +94,8 @@ else
 
 		// get the image data from the canvas
 		const image = ctx.getImageData(0, 0, canvas.width, canvas.height)
-
+		ctx.rect(20, 20, 150, 100);
+		ctx.stroke();
 		// convert the image data to grayscale 
 		const grayData = []
 		const d = image.data;
