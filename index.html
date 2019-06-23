@@ -59,10 +59,11 @@ const logg= document.getElementById("logid");
 		const actualSettings = track.getSettings();
 		const input = document.querySelector('input[type="range"]');
 		if (!('zoom' in capabilities)) {
-			return Promise.reject('Zoom is not supported by ' + track.label);
+			//return Promise.reject('Zoom is not supported by ' + track.label);
+			console.log('Zoom is not supported by ' + track.label);
 		}
-
-		 input.min = capabilities.zoom.min;
+else
+{		 input.min = capabilities.zoom.min;
   input.max = capabilities.zoom.max;
   input.step = capabilities.zoom.step;
   input.value = actualSettings.zoom;
@@ -70,7 +71,7 @@ const logg= document.getElementById("logid");
     track.applyConstraints({advanced: [ {zoom: event.target.value} ]});
   }
   input.hidden = false;
-  
+  }
 		
 		console.log(actualSettings.width, actualSettings.height)
 		canvas.width = actualSettings.width;
