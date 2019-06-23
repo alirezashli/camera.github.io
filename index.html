@@ -95,14 +95,14 @@ else
 	});
 
 	function detectSymbols() {
-	  ctx.rect(leftCor,topCor, widthCore, heightCore);
-		ctx.strokeStyle = "blue";
-		ctx.stroke();
+	 
 		//// grab a frame from the media source and draw it to the canvas
 		ctx.drawImage(video, 0, 0, canvas.width, canvas.height);		
 		//// get the image data from the canvas
 		//const image = ctx.getImageData(0, 0, canvas.width, canvas.height)
-		
+		ctx.rect(leftCor,topCor, widthCore, heightCore);
+		ctx.strokeStyle = "blue";
+		ctx.stroke();
 		const image = ctx.getImageData(leftCor,topCor, widthCore, heightCore);
 		//// convert the image data to grayscale 
 		const grayData = []
