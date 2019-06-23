@@ -36,6 +36,12 @@ const logg= document.getElementById("logid");
 	const canvas = document.getElementById("canvas");
 	canvas.width =640 ;//actualSettings.width;
 	canvas.height = 480;//actualSettings.height;
+	const leftCor=10;
+	const topCor=(canvas.height/2)-20;
+	const widthCore= canvas.width-30;
+	const heightCore=70;
+	//ctx.rect(leftCor,topCor, widthCore, heightCore);
+	
 	const ctx = canvas.getContext('2d');
 	const desiredWidth = 640;
 	const desiredHeight = 480;
@@ -89,29 +95,30 @@ else
 	});
 
 	function detectSymbols() {
-		// grab a frame from the media source and draw it to the canvas
-		ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-
-		// get the image data from the canvas
-		const image = ctx.getImageData(0, 0, canvas.width, canvas.height)
-		ctx.rect(10, (canvas.height/2)-20, canvas.width-30, 50);
+	  ctx.rect(leftCor,topCor, widthCore, heightCore);
 		ctx.strokeStyle = "blue";
 		ctx.stroke();
-		// convert the image data to grayscale 
+		//// grab a frame from the media source and draw it to the canvas
+		ctx.drawImage(video, 0, 0, canvas.width, canvas.height);		
+		//// get the image data from the canvas
+		//const image = ctx.getImageData(0, 0, canvas.width, canvas.height)
+		
+		const image = ctx.getImageData(leftCor,topCor, widthCore, heightCore);
+		//// convert the image data to grayscale 
 		const grayData = []
 		const d = image.data;
 		for (var i = 0, j = 0; i < d.length; i += 4, j++) {
 			grayData[j] = (d[i] * 66 + d[i + 1] * 129 + d[i + 2] * 25 + 4096) >> 8;
 		}
 
-		// put the data into the allocated buffer
+		//// put the data into the allocated buffer
 		const p = api.create_buffer(image.width, image.height);
 		Module.HEAP8.set(grayData, p);
 
-		// call the scanner function
+		//// call the scanner function
 		api.scan_image(p, image.width, image.height)
 
-		// clean up (this is not really necessary in this example, but is used to demonstrate how you can manage Wasm heap memory from the js environment)
+		//// clean up (this is not really necessary in this example, but is used to demonstrate how you can manage Wasm heap memory from the js environment)
 		api.destroy_buffer(p);
 
 	}
