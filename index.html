@@ -36,15 +36,15 @@ const logg= document.getElementById("logid");
 	const canvas = document.getElementById("canvas");
 	canvas.width =640 ;//actualSettings.width;
 	canvas.height = 480;//actualSettings.height;
-	const leftCor=10;
-	const topCor=(canvas.height/2)-20;
-	const widthCore= canvas.width-30;
-	const heightCore=70;
+	var leftCor=10;
+	var topCor=(canvas.height/2)-20;
+	var widthCore= canvas.width-30;
+	var heightCore=70;
 	//ctx.rect(leftCor,topCor, widthCore, heightCore);
 	
 	const ctx = canvas.getContext('2d');
-	//const desiredWidth = 1280;
-	//const desiredHeight = 1024;
+	const desiredWidth = 1280;
+	const desiredHeight = 1024;
 
 	// settings for the getUserMedia call
 	const constraints = {
