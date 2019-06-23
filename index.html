@@ -80,7 +80,9 @@ else
 		// every k milliseconds, we draw the contents of the video to the canvas and run the detector.
 		const timer = setInterval(detectSymbols, 250);
 
-	})
+	}).catch((e) => {
+		throw e
+	});
 
 	function detectSymbols() {
 		// grab a frame from the media source and draw it to the canvas
