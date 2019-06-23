@@ -10,6 +10,7 @@
 
 <video id="live" width="320" height="240" autoplay style="border:5px solid #000000; display:none;"> </video>
 <canvas id="canvas" style="border:5px solid #000000"> </canvas>
+<input type="range" hidden="">
 <ul id="logid">
 		
 </ul>
@@ -54,7 +55,23 @@ const logg= document.getElementById("logid");
 
 		// tell the canvas which resolution we ended up getting from the webcam
 		const track = stream.getVideoTracks()[0];
+		const capabilities = track.getCapabilities();
 		const actualSettings = track.getSettings();
+		const input = document.querySelector('input[type="range"]');
+		if (!('zoom' in capabilities)) {
+			return Promise.reject('Zoom is not supported by ' + track.label);
+		}
+
+		 input.min = capabilities.zoom.min;
+  input.max = capabilities.zoom.max;
+  input.step = capabilities.zoom.step;
+  input.value = settings.zoom;
+  input.oninput = function(event) {
+    track.applyConstraints({advanced: [ {zoom: event.target.value} ]});
+  }
+  input.hidden = false;
+  }
+		
 		console.log(actualSettings.width, actualSettings.height)
 		canvas.width = actualSettings.width;
 		canvas.height = actualSettings.height;
