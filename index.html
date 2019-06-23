@@ -48,8 +48,8 @@ const logg= document.getElementById("logid");
 	};
 
 	// open the webcam stream
-	//navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
-	navigator.mediaDevices.getUserMedia({video: true}).then((stream) => {
+	navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
+	//navigator.mediaDevices.getUserMedia({video: true}).then((stream) => {
 		// stream is a MediaStream object
 		video.srcObject = stream;
 		video.play();
