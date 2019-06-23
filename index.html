@@ -36,7 +36,7 @@ const logg= document.getElementById("logid");
 	const canvas = document.getElementById("canvas");
 	const ctx = canvas.getContext('2d');
 	const desiredWidth = 640;
-	const desiredHeight = 680;
+	const desiredHeight = 480;
 
 	// settings for the getUserMedia call
 	const constraints = {
@@ -48,8 +48,8 @@ const logg= document.getElementById("logid");
 	};
 
 	// open the webcam stream
-	navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
-	//navigator.mediaDevices.getUserMedia({video: true}).then((stream) => {
+	//navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
+navigator.mediaDevices.getUserMedia({video: true}).then((stream) => {
 		// stream is a MediaStream object
 		video.srcObject = stream;
 		video.play();
@@ -75,8 +75,8 @@ else
   }
 		
 		console.log(actualSettings.width, actualSettings.height)
-		canvas.width = actualSettings.width;
-		canvas.height = actualSettings.height;
+		canvas.width =640 ;//actualSettings.width;
+		canvas.height = 480;//actualSettings.height;
 
 		// every k milliseconds, we draw the contents of the video to the canvas and run the detector.
 		const timer = setInterval(detectSymbols, 250);
