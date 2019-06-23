@@ -94,7 +94,7 @@ else
 
 		// get the image data from the canvas
 		const image = ctx.getImageData(0, 0, canvas.width, canvas.height)
-		ctx.rect(20, 20, 150, 100);
+		ctx.rect(10, (canvas.height/2)-10, canvas.width-30, 30);
 		ctx.stroke();
 		// convert the image data to grayscale 
 		const grayData = []
